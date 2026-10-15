@@ -305,6 +305,10 @@ public class FindPathAStar : MonoBehaviour
             while (startNode != begin && begin != null)
             {
                 GameObject pathBlock = Instantiate(pathP, new Vector3(begin.location.x * maze.scale, 0, begin.location.z * maze.scale), Quaternion.identity);
+                TextMesh[] values = pathBlock.GetComponentsInChildren<TextMesh>();
+                values[0].text = "g(n): " + begin.G.ToString("0.00");
+                values[1].text = "h(n): " + begin.H.ToString("0.00");
+                values[2].text = "f(n): " + begin.F.ToString("0.00");
                 begin = begin.parent;
             }
         //    Instanciamos un nuevo pathMaker que senyalara el camino de vuelta
